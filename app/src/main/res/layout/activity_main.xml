@@ -27,6 +27,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/butt3"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:text="clicl"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/butt4"/>
 
     </LinearLayout>
  <FrameLayout
