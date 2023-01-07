@@ -9,10 +9,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button b1,b2,b3;
-Fragment frage1,frage2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +22,13 @@ Fragment frage1,frage2;
       b1=findViewById(R.id.butt1);
         b2=findViewById(R.id.butt2);
         b3=findViewById(R.id.butt3);
-        b1.setOnClickListener(this);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                load(new BlankFragment2(),1);
+                Toast.makeText(MainActivity.this, "hello", Toast.LENGTH_SHORT).show();
+            }
+        });
         b2.setOnClickListener(this);
         b3.setOnClickListener(this);
 
@@ -30,11 +37,7 @@ Fragment frage1,frage2;
     @Override
     public void onClick(View v)
     {
-        if(v==b1)
-        {
-           load(new BlankFragment2(),1);
-        }
-        else if(v==b2)
+         if(v==b2)
         {
             load(new BlankFragment3(),1);
         }
@@ -47,15 +50,15 @@ Fragment frage1,frage2;
     public void load(Fragment ftk,int flag)
     {
 
-        FragmentManager fm=getSupportFragmentManager();
-        FragmentTransaction ft=fm.beginTransaction();
-        if(flag==0)
+        FragmentManager fragmentManager=getSupportFragmentManager();
+        FragmentTransaction ft=fragmentManager.beginTransaction();
+        if(flag==0) {
 
-
-        ft.add(R.id.frame,ftk);
-        else
-            ft.replace(R.id.frame,new BlankFragment2());
-
+            ft.replace(R.id.frame, ftk);
+        }
+        else {
+            ft.replace(R.id.frame, new BlankFragment2());
+        }
         ft.commit();
 
     }
